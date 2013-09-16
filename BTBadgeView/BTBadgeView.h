@@ -1,7 +1,7 @@
 //
 //  BTBadgeView.h
 //
-//  Version 1.0.0
+//  Version 1.1
 //
 //  Created by Borut Tomazin on 12/04/2013.
 //  Copyright 2013 Borut Tomazin
@@ -31,6 +31,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#ifdef __IPHONE_6_0 // iOS6 and later
+#  define UITextAlignment                   NSTextAlignment
+#  define UITextAlignmentCenter             NSTextAlignmentCenter
+#  define UITextAlignmentLeft               NSTextAlignmentLeft
+#  define UITextAlignmentRight              NSTextAlignmentRight
+#  define UILineBreakModeTailTruncation     NSLineBreakByTruncatingTail
+#  define UILineBreakModeMiddleTruncation   NSLineBreakByTruncatingMiddle
+#endif
 
 @interface BTBadgeView : UIView
 

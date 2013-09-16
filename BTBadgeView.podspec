@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BTBadgeView"
-  s.version      = "1.0.0"
+  s.version      = "1.1"
   s.license      = { :type => 'zlib', :file => 'LICENCE.md' }
   s.summary      = "A view that replicates and extends the number badge UI element in iOS."
   s.homepage     = "https://github.com/borut-t/BTBadgeView"

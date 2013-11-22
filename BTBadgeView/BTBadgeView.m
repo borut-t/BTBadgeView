@@ -104,13 +104,15 @@
 		case NSTextAlignmentJustified:
 		case NSTextAlignmentNatural:
 		case UITextAlignmentCenter:
-			ctm = CGPointMake(round((viewBounds.size.width - badgeRect.size.width)/2), round((viewBounds.size.height - badgeRect.size.height)/2));
+			ctm = CGPointMake(round((viewBounds.size.width - badgeRect.size.width)/2),
+                              round((viewBounds.size.height - badgeRect.size.height)/2));
 			break;
 		case UITextAlignmentLeft:
 			ctm = CGPointMake(0, round((viewBounds.size.height - badgeRect.size.height)/2));
 			break;
 		case UITextAlignmentRight:
-			ctm = CGPointMake((viewBounds.size.width - badgeRect.size.width), round((viewBounds.size.height - badgeRect.size.height)/2));
+			ctm = CGPointMake((viewBounds.size.width - badgeRect.size.width),
+                              round((viewBounds.size.height - badgeRect.size.height)/2));
 			break;
 	}
 	
@@ -178,7 +180,8 @@
 	CGContextSaveGState(curContext);
 	CGContextSetFillColorWithColor(curContext, self.textColor.CGColor);
 		
-	CGPoint textPt = CGPointMake(ctm.x + (badgeRect.size.width - numberSize.width)/2 , ctm.y + (badgeRect.size.height - numberSize.height)/2);
+	CGPoint textPt = CGPointMake(ctm.x + (badgeRect.size.width - numberSize.width)/2 ,
+                                 ctm.y + (badgeRect.size.height - numberSize.height)/2);
 	
 	[_value drawAtPoint:textPt withFont:self.font];
 
@@ -227,14 +230,12 @@
 	
 	badgeRect.origin.x = 0;
 	badgeRect.origin.y = 0;
-	badgeRect.size.width = ceil( badgeRect.size.width );
-	badgeRect.size.height = ceil( badgeRect.size.height );
+	badgeRect.size.width = ceil(badgeRect.size.width);
+	badgeRect.size.height = ceil(badgeRect.size.height);
 	
 	CGPathRelease(badgePath);
 	
 	return badgeRect.size;
 }
-
-
 
 @end

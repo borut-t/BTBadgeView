@@ -79,7 +79,7 @@
 - (void)drawRect:(CGRect)rect 
 {
 	CGRect viewBounds = self.bounds;
-	CGContextRef curContext = UIGraphicsGetCurrentContext();
+	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGSize numberSize = [_value sizeWithFont:self.font];
 	CGPathRef badgePath = [self newBadgePathForTextSize:numberSize];
 	CGRect badgeRect = CGPathGetBoundingBox(badgePath);
@@ -89,10 +89,10 @@
 	badgeRect.size.width = ceil(badgeRect.size.width);
 	badgeRect.size.height = ceil(badgeRect.size.height);
 	
-	CGContextSaveGState(curContext);
-	CGContextSetLineWidth(curContext, self.strokeWidth);
-	CGContextSetStrokeColorWithColor(curContext, self.strokeColor.CGColor);
-	CGContextSetFillColorWithColor(curContext, self.fillColor.CGColor);
+	CGContextSaveGState(context);
+	CGContextSetLineWidth(context, self.strokeWidth);
+	CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
+	CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
 	
 	// Line stroke straddles the path, so we need to account for the outer portion
 	badgeRect.size.width += ceilf(self.strokeWidth / 2);
@@ -116,76 +116,83 @@
 			break;
 	}
 	
-	CGContextTranslateCTM(curContext, ctm.x, ctm.y);
+	CGContextTranslateCTM(context, ctm.x, ctm.y);
 
+    // add shadow
 	if (self.shadow) {
-		CGContextSaveGState(curContext);
+		CGContextSaveGState(context);
 
 		CGSize blurSize = self.shadowOffset;
 		
-		CGContextSetShadowWithColor(curContext, blurSize, 4, self.shadowColor.CGColor);
+		CGContextSetShadowWithColor(context, blurSize, 4, self.shadowColor.CGColor);
 		
-		CGContextBeginPath(curContext);
-		CGContextAddPath(curContext, badgePath);
-		CGContextClosePath(curContext);
+		CGContextBeginPath(context);
+		CGContextAddPath(context, badgePath);
+		CGContextClosePath(context);
 		
-		CGContextDrawPath(curContext, kCGPathFillStroke);
-		CGContextRestoreGState(curContext); 
+		CGContextDrawPath(context, kCGPathFillStroke);
+		CGContextRestoreGState(context);
 	}
 	
-	CGContextBeginPath(curContext);
-	CGContextAddPath(curContext, badgePath);
-	CGContextClosePath(curContext);
-	CGContextDrawPath(curContext, kCGPathFillStroke);
+	CGContextBeginPath(context);
+	CGContextAddPath(context, badgePath);
+	CGContextClosePath(context);
+	CGContextDrawPath(context, kCGPathFillStroke);
     
-	// add shine to badge
+	// add shine
 	if (self.shine) {
-		CGContextBeginPath(curContext);
-		CGContextAddPath(curContext, badgePath);
-		CGContextClosePath(curContext);
-		CGContextClip(curContext);
+		CGContextBeginPath(context);
+		CGContextAddPath(context, badgePath);
+		CGContextClosePath(context);
+		CGContextClip(context);
 		
 		CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
 		CGFloat shinyColorGradient[8] = {1, 1, 1, 0.8, 1, 1, 1, 0}; 
 		CGFloat shinyLocationGradient[2] = {0, 1}; 
 		CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, shinyColorGradient, shinyLocationGradient, 2);
 		
-		CGContextSaveGState(curContext); 
-		CGContextBeginPath(curContext); 
-		CGContextMoveToPoint(curContext, 0, 0); 
+		CGContextSaveGState(context);
+		CGContextBeginPath(context);
+		CGContextMoveToPoint(context, 0, 0);
 		
 		CGFloat shineStartY = badgeRect.size.height*0.25;
 		CGFloat shineStopY = shineStartY + badgeRect.size.height*0.4;
 		
-		CGContextAddLineToPoint(curContext, 0, shineStartY); 
-		CGContextAddCurveToPoint(curContext, 0, shineStopY, 
-										badgeRect.size.width, shineStopY, 
-										badgeRect.size.width, shineStartY); 
-		CGContextAddLineToPoint(curContext, badgeRect.size.width, 0); 
-		CGContextClosePath(curContext); 
-		CGContextClip(curContext); 
-		CGContextDrawLinearGradient(curContext, gradient, 
+		CGContextAddLineToPoint(context, 0, shineStartY);
+		CGContextAddCurveToPoint(context,
+                                 0,
+                                 shineStopY,
+                                 badgeRect.size.width, shineStopY,
+                                 badgeRect.size.width, shineStartY);
+		CGContextAddLineToPoint(context, badgeRect.size.width, 0);
+		CGContextClosePath(context);
+		CGContextClip(context);
+		CGContextDrawLinearGradient(context,
+                                    gradient,
 									CGPointMake(badgeRect.size.width / 2.0, 0), 
 									CGPointMake(badgeRect.size.width / 2.0, shineStopY), 
 									kCGGradientDrawsBeforeStartLocation); 
-		CGContextRestoreGState(curContext); 
+		CGContextRestoreGState(context);
 		
 		CGColorSpaceRelease(colorSpace); 
 		CGGradientRelease(gradient); 
 	}
     
-	CGContextRestoreGState(curContext);
+	CGContextRestoreGState(context);
 	CGPathRelease(badgePath);
 	
-	CGContextSaveGState(curContext);
-	CGContextSetFillColorWithColor(curContext, self.textColor.CGColor);
-		
-	CGPoint textPt = CGPointMake(ctm.x + (badgeRect.size.width - numberSize.width)/2 ,
-                                 ctm.y + (badgeRect.size.height - numberSize.height)/2);
+	CGContextSaveGState(context);
+	CGContextSetFillColorWithColor(context, self.textColor.CGColor);
+    
+    NSLog(@"point: %@",NSStringFromCGPoint(ctm));
+//	CGPoint textPt = CGPointMake(ctm.x + (badgeRect.size.width - numberSize.width)/2 ,
+//                                 ctm.y + (badgeRect.size.height - numberSize.height)/2);
+    CGPoint textPt = CGPointMake(rect.size.width/2.f - numberSize.width/2.f,
+                                 rect.size.height/2.f - numberSize.height/2.f);
 	
 	[_value drawAtPoint:textPt withFont:self.font];
 
-	CGContextRestoreGState(curContext);
+	CGContextRestoreGState(context);
 }
 
 

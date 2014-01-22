@@ -31,7 +31,7 @@
     
     // Badge Two
     self.badgeTwo.fillColor = [UIColor purpleColor];
-    self.badgeTwo.hideWhenZero = YES;
+    self.badgeTwo.hideWhenEmpty = YES;
     
     // Badge Three
     self.badgeThree.fillColor = [UIColor blackColor];
@@ -46,6 +46,7 @@
     self.badgeFive.value = [NSString stringWithFormat:@"Version %@",
                             [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     
+    self.valueSlider.value = 3;
     [self slideValueChanged:self];
 }
 
@@ -54,8 +55,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 -(IBAction)slideValueChanged:(id)sender
 {

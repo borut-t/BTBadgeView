@@ -1,6 +1,6 @@
 BTBadgeView
 
-Version 1.1, September 16th, 2013
+Version 1.2, January 22nd, 2014
 
 Copyright (C) 2013 Borut Tomazin
 

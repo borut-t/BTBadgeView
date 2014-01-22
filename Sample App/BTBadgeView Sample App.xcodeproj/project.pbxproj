@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFC38132188FA477005C1825 /* NSString+BTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC38131188FA477005C1825 /* NSString+BTUtils.m */; };
 		BFD8651017180CC300565D15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD8650F17180CC300565D15 /* UIKit.framework */; };
 		BFD8651217180CC300565D15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD8651117180CC300565D15 /* Foundation.framework */; };
 		BFD8651417180CC300565D15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD8651317180CC300565D15 /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFC38130188FA477005C1825 /* NSString+BTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BTUtils.h"; sourceTree = "<group>"; };
+		BFC38131188FA477005C1825 /* NSString+BTUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BTUtils.m"; sourceTree = "<group>"; };
 		BFD8650C17180CC300565D15 /* BTBadgeView Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BTBadgeView Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD8650F17180CC300565D15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFD8651117180CC300565D15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,6 +119,8 @@
 			children = (
 				BFD8656917180F5700565D15 /* BTBadgeView.h */,
 				BFD8656A17180F5700565D15 /* BTBadgeView.m */,
+				BFC38130188FA477005C1825 /* NSString+BTUtils.h */,
+				BFC38131188FA477005C1825 /* NSString+BTUtils.m */,
 			);
 			name = BTBadgeView;
 			path = ../../BTBadgeView;
@@ -189,6 +194,7 @@
 			files = (
 				BFD8651C17180CC300565D15 /* main.m in Sources */,
 				BFD8652017180CC300565D15 /* AppDelegate.m in Sources */,
+				BFC38132188FA477005C1825 /* NSString+BTUtils.m in Sources */,
 				BFD8652917180CC300565D15 /* ViewController.m in Sources */,
 				BFD8656B17180F5700565D15 /* BTBadgeView.m in Sources */,
 			);

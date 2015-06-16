@@ -1,7 +1,7 @@
 //
 //  BTBadgeView.m
 //
-//  Version 1.2
+//  Version 1.3
 //
 //  Created by Borut Tomazin on 12/04/2013.
 //  Copyright 2013 Borut Tomazin

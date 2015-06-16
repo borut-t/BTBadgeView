@@ -1,7 +1,7 @@
 //
 //  BTBadgeView.h
 //
-//  Version 1.2
+//  Version 1.3
 //
 //  Created by Borut Tomazin on 12/04/2013.
 //  Copyright 2013 Borut Tomazin
@@ -34,59 +34,37 @@
 IB_DESIGNABLE
 @interface BTBadgeView : UIView
 
-/**
- The current value displayed in the badge. Updating the value will update the view's display.
- */
+/** The current value displayed in the badge. Updating the value will update the view's display. */
 @property (nonatomic,copy) IBInspectable NSString *value;
 
-/**
- Indicates whether the badge view draws a shadow or not.
- */
+/** Indicates whether the badge view draws a shadow or not. */
 @property (nonatomic,assign) IBInspectable BOOL shadow;
 
-/**
- (Optional) The offset for the shadow.
- */
+/** (Optional) The offset for the shadow. */
 @property (nonatomic,assign) IBInspectable CGSize shadowOffset;
 
-/**
- (Optional) The base color for the shadow.
- */
+/** (Optional) The base color for the shadow. */
 @property (nonatomic,strong) IBInspectable UIColor *shadowColor;
 
-/**
- Indicates whether the badge view should be drawn with a shine.
- */
+/** Indicates whether the badge view should be drawn with a shine. */
 @property (nonatomic,assign) IBInspectable BOOL shine;
 
-/**
- The font to be used for drawing the numbers. NOTE: Only "system fonts" should be used.
- */
+/** The font to be used for drawing the numbers. NOTE: Only "system fonts" should be used. */
 @property (nonatomic,strong) IBInspectable UIFont *font;
 
-/**
- The color used for the background of the badge.
- */
+/** The color used for the background of the badge. */
 @property (nonatomic,strong) IBInspectable UIColor *fillColor;
 
-/**
- The color to be used for drawing the stroke around the badge.
- */
+/** The color to be used for drawing the stroke around the badge. */
 @property (nonatomic,strong) IBInspectable UIColor *strokeColor;
 
-/**
- The width for the stroke around the badge.
- */
+/** The width for the stroke around the badge. */
 @property (nonatomic,assign) IBInspectable CGFloat strokeWidth;
 
-/**
- The color to be used for drawing the badge's numbers.
- */
+/** The color to be used for drawing the badge's numbers. */
 @property (nonatomic,strong) IBInspectable UIColor *textColor;
 
-/**
- If YES, the badge will be hidden when the value is 0 or empty string.
- */
+/** If YES, the badge will be hidden when the value is 0 or empty string. */
 @property (nonatomic,assign) IBInspectable BOOL hideWhenEmpty;
 
 @end

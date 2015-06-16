@@ -31,62 +31,62 @@
 //
 
 #import <UIKit/UIKit.h>
-
+IB_DESIGNABLE
 @interface BTBadgeView : UIView
 
 /**
  The current value displayed in the badge. Updating the value will update the view's display.
  */
-@property (nonatomic,copy) NSString *value;
+@property (nonatomic,copy) IBInspectable NSString *value;
 
 /**
  Indicates whether the badge view draws a shadow or not.
  */
-@property (nonatomic,assign) BOOL shadow;
+@property (nonatomic,assign) IBInspectable BOOL shadow;
 
 /**
  (Optional) The offset for the shadow.
  */
-@property (nonatomic,assign) CGSize shadowOffset;
+@property (nonatomic,assign) IBInspectable CGSize shadowOffset;
 
 /**
  (Optional) The base color for the shadow.
  */
-@property (nonatomic,strong) UIColor *shadowColor;
+@property (nonatomic,strong) IBInspectable UIColor *shadowColor;
 
 /**
  Indicates whether the badge view should be drawn with a shine.
  */
-@property (nonatomic,assign) BOOL shine;
+@property (nonatomic,assign) IBInspectable BOOL shine;
 
 /**
  The font to be used for drawing the numbers. NOTE: Only "system fonts" should be used.
  */
-@property (nonatomic,strong) UIFont *font;
+@property (nonatomic,strong) IBInspectable UIFont *font;
 
 /**
  The color used for the background of the badge.
  */
-@property (nonatomic,strong) UIColor *fillColor;
+@property (nonatomic,strong) IBInspectable UIColor *fillColor;
 
 /**
  The color to be used for drawing the stroke around the badge.
  */
-@property (nonatomic,strong) UIColor *strokeColor;
+@property (nonatomic,strong) IBInspectable UIColor *strokeColor;
 
 /**
  The width for the stroke around the badge.
  */
-@property (nonatomic,assign) CGFloat strokeWidth;
+@property (nonatomic,assign) IBInspectable CGFloat strokeWidth;
 
 /**
  The color to be used for drawing the badge's numbers.
  */
-@property (nonatomic,strong) UIColor *textColor;
+@property (nonatomic,strong) IBInspectable UIColor *textColor;
 
 /**
  If YES, the badge will be hidden when the value is 0 or empty string.
  */
-@property (nonatomic,assign) BOOL hideWhenEmpty;
+@property (nonatomic,assign) IBInspectable BOOL hideWhenEmpty;
 
 @end
